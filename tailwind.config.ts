@@ -14,11 +14,11 @@ const config: Config = {
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
 			colors: {
-				primary: "#332941",
-				secondary: "#3B3486",
-				tertiary: "#864AF9",
-				quaternary: "#F8E559",
-				quinary: "#1a1a1a",
+				primary: "#332941" /* 1 */,
+				secondary: "#3B3486" /* 2 */,
+				tertiary: "#864AF9" /* 3 */,
+				quaternary: "#F8E559" /* 4  Amarillo */,
+				quinary: "#1a1a1a" /* 5 Negro */,
 			},
 			keyframes: {
 				curriculum: {
