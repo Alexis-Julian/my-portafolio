@@ -5,22 +5,40 @@ import DeployProjects from "./DeployProjects";
 import Letter from "./Letter";
 import NavSection from "./NavSections";
 import Pagination from "./Pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Presentation from "./Presentation";
 import { Section } from "@/app/shared/types";
 import { useRef } from "react";
 import AboutMe from "./AboutMe";
-// import Hammer as * from "react-hammerjs";
 import ReactHammer from "react-hammerjs";
+import { CreateSectionsType } from "@/app/shared/types";
 
-const navSection = ["Portafolio", "Proyectos", "Test", "Test"];
+function CreateLayout(
+	{ ancho, alto }: { alto: number; ancho: number },
+	CreateSections: any
+) {
+	const navSection = ["Portafolio", "Proyectos"];
 
-export const Sections = navSection.map((section, index) => {
-	let translate = 100 / (index + 1);
-	if (translate == 100) translate = 0;
-	return { movement: String(translate), index };
-});
-console.log(Sections);
+	if (alto < 960) navSection.push("Sobre mi");
+
+	const screenTotal = 100 * navSection.length;
+
+	let translate: number = Number((100 / navSection.length).toFixed(1));
+
+	return CreateSections(navSection, translate, screenTotal);
+}
+
+function CreateSections(
+	navSection: Array<String>,
+	translate: number,
+	screenTotal: Number
+) {
+	const Sections = navSection.map((section, index) => {
+		return { name: section, movement: String(translate * index), index };
+	});
+	return { Sections, translate, screenTotal };
+}
+
 const proyectos = [
 	"Back-End Ecomeerce",
 	"Back-End Ecomeerce",
@@ -34,24 +52,38 @@ const proyectos = [
 	"Back-End Ecomeerce",
 ];
 
+let index = 0;
+
 export default function FirstPage() {
+	//Mover logica de estilos a css
+
+	const [useTamano, setTamano] = useState<{ ancho: number; alto: number }>({
+		ancho: 0,
+		alto: 0,
+	});
+
+	useEffect(() => {
+		setTamano({
+			ancho: window.innerWidth,
+			alto: window.innerHeight,
+		});
+	}, []);
+
+	const { Sections, translate, screenTotal } = CreateLayout(
+		useTamano,
+		CreateSections
+	);
+	console.log(Sections, translate, screenTotal);
+
 	const [useSection, setSection] = useState<Section>(Sections[0]);
-	const elemento: any = useRef(null);
-	let index = 0;
-	function Probando() {
-		return <div>123</div>;
-	}
-	/* 	function test() {
-		return <ReactHammer ></ReactHammer>;
-	}
-	
- */
 	const HandleSwipe = (event: any) => {
-		if (event.direction === 2) {
+		if (useTamano.alto > 960) return null;
+
+		if (event.direction === 2 && index < Sections.length - 1) {
 			// Deslizamiento hacia la izquierda
 			index += 1;
 			setSection(Sections[index]);
-		} else if (event.direction === 4) {
+		} else if (event.direction === 4 && index > 0) {
 			// Deslizamiento hacia la derecha
 			index -= 1;
 			setSection(Sections[index]);
@@ -62,36 +94,65 @@ export default function FirstPage() {
 			<Pagination useSection={useSection} />
 			<ReactHammer onSwipe={HandleSwipe}>
 				<main
-					ref={elemento}
-					className="h-[200%] z-50 w-full transition-all duration-1000 relative  phone:h-[100%] phone:w-[400%] phone:absolute phone:flex phone:bg-quinary      "
-					// style={{ transform: `translateY(-${useSection.movement}%)` }}
-					style={{ transform: `translateX(-${useSection.movement}%)` }}
+					className={`lg:w-full lg:relative  lg:flex-col   z-50 h-full  absolute flex bg-quinary transition-all duration-1000 `}
+					style={{
+						transform:
+							useTamano.alto > 960
+								? `translateY(-${useSection.movement}%)`
+								: `translateX(-${useSection.movement}%)`,
+
+						height: useTamano.alto > 960 ? `${screenTotal}%` : "100%",
+						width: useTamano.alto < 960 ? `${screenTotal}%` : "100%",
+					}}
 				>
-					<div className="h-[50%] w-full  phone:h-full phone:w-[25%]  ">
+					{/* Celular y Desktop */}
+					<div
+						className={`lg:grid lg:grid-cols-2 lg:gap-4 lg:p-2 | p-0   `}
+						style={{
+							height: useTamano.alto > 960 ? `${translate}%` : "100%",
+							width: useTamano.alto < 960 ? `${translate}%` : "100%",
+						}}
+					>
 						<Presentation
 							setSection={setSection}
-							navSection={navSection}
+							navSection={Sections}
 							useSection={useSection}
 						/>
-					</div>
-					<div className="phone:w-[25%] phone:h-[100%]   ">
-						<Curriculum setSection={setSection} />
-					</div>
-					<div className="phone:w-[25%] ">
-						<h2 className="text-white">Probando</h2>
-						{/* <Letter proyectos={proyectos} /> */}
+						<div className=" lg:inline-block hidden	">
+							<Curriculum />
+						</div>
 					</div>
 
-					<div className="phone:w-[25%] overflow-hidden">
+					{/* Celular */}
+
+					<div
+						className={`p-[0.2px] relative lg:grid lg:grid-cols-2 `}
+						style={{
+							height: useTamano.alto > 960 ? `${translate}%` : "100%",
+							width: useTamano.alto < 960 ? `${translate}%` : "100%",
+						}}
+					>
+						<div className="h-full w-full border-4 border-tertiary rounded-md z-50 text-white relative  ">
+							{/* <Letter proyectos={proyectos} /> */}
+						</div>
+
+						<div className="hidden lg:inline-block lg:h-full lg:w-full z-50">
+							<AboutMe />
+						</div>
+
+						<div className="absolute border-4 border-white rounded-lg  h-full w-full  blur-sm phone:bg-[url('/protruding-squares.svg')]  z-10  top-0"></div>
+					</div>
+					{/* Celular */}
+
+					<div
+						className={`overflow-hidden lg:hidden inline-block`}
+						style={{
+							height: useTamano.alto > 960 ? `${translate}%` : "100%",
+							width: useTamano.alto < 960 ? `${translate}%` : "100%",
+						}}
+					>
 						<AboutMe />
 					</div>
-					{/* <div className="h-[50%] text-quaternary overflow-hidden ">
-					<DeployProjects
-						setSection={setSection}
-						navSection={navSection}
-						useSection={useSection}
-					/>
-				</div> */}
 				</main>
 			</ReactHammer>
 		</>

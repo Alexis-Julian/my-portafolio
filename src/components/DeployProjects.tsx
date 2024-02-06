@@ -9,7 +9,7 @@ export default function DeployProjects({
 	useSection,
 }: {
 	setSection: Dispatch<SetStateAction<Section>>;
-	navSection: Array<string>;
+	navSection: Array<Section>;
 	useSection: Section;
 }) {
 	const proyectos = [

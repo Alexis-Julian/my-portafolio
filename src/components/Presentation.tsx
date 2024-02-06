@@ -9,10 +9,10 @@ export default function Presentation({
 	useSection,
 }: {
 	setSection: Dispatch<SetStateAction<Section>>;
-	navSection: Array<String>;
+	navSection: Array<Section>;
 	useSection: Section;
 }) {
-	console.log(useSection);
+	// console.log(useSection);
 
 	return (
 		<section className="z-10 h-full w-full grid grid-cols-2 items-center justify-center phone:grid-cols-1 phone:w-[100%] bg-white   ">
@@ -25,9 +25,6 @@ export default function Presentation({
 							useSection={useSection}
 						/>
 					</div>
-					{/* 	<div className="bg-white h-full w-full absolute transition-all curriculum   mx-[2%] rounded-md">
-						<Curriculum setSection={setSection} />
-					</div> */}
 				</div>
 			</div>
 		</section>

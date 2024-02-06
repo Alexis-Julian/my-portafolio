@@ -1,19 +1,19 @@
 "use client";
 import { Section } from "@/app/shared/types";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { Sections } from "./HomePage";
 export default function NavSection({
 	navSection,
 	useSection,
 	setSection,
 }: {
-	navSection: Array<String>;
+	navSection: Array<Section>;
 	useSection: Section;
 	setSection: Dispatch<SetStateAction<Section>>;
 }) {
 	const [useChangeSection, setChangeSection] = useState<Section>({
 		movement: "0",
 		index: 0,
+		name: "",
 	});
 
 	useEffect(() => {
@@ -21,14 +21,13 @@ export default function NavSection({
 	}, [useSection]);
 
 	function ChangeSection(index: number) {
-		setSection(Sections[index]);
+		setSection(navSection[index]);
 	}
 
 	return (
 		<nav className="h-full w-full">
 			<ul className="h-full w-full flex items-center gap-4">
 				{navSection.map((section, index) => {
-					console.log(useChangeSection.index == index);
 					return (
 						<li
 							key={index}
@@ -42,7 +41,7 @@ export default function NavSection({
 										: "text-quaternary"
 								} hover:text-white textobrillante cursor-pointer  transition-all hover:textobrillante `}
 							>
-								{section}
+								{section.name}
 							</p>
 						</li>
 					);
