@@ -8,7 +8,7 @@ export default function Pagination({
 	const section = [true, false];
 
 	return (
-		<div className="fixed right-0 mr-[0.5%]  flex flex-col gap-2 z-50 bottom-[50%]">
+		<div className=" phone:hidden fixed right-0 mr-[0.5%]  flex flex-col gap-2 z-50 bottom-[50%]">
 			{section.map((e, index) => (
 				<div
 					className="h-[20px] w-[20px] bg-primary  rounded-full p-[6px] border-[0.4px] shadow shadow-tertiary border-secondary cursor-pointer"

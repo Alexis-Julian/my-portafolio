@@ -1,14 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
+import { Section } from "@/app/shared/types";
 
 export default function ArrowDown({
 	setSection,
 }: {
-	setSection: Dispatch<
-		SetStateAction<{
-			movement: string;
-			index: number;
-		}>
-	>;
+	setSection: Dispatch<SetStateAction<Section>>;
 }) {
 	function HandleMovementSection() {
 		setSection({ movement: "50", index: 1 });
