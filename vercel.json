@@ -1,0 +1,9 @@
+{
+    "build": {
+      "env": {
+        "CI": "true"
+      },
+      "command": "npm install --force && npm run build"
+    }
+  }
+  
