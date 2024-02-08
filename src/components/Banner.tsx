@@ -18,7 +18,7 @@ export default function Banner({
 	return (
 		<div className="h-full w-full bg-[url('/protruding-squares.svg')] relative rounded-lg border-2 border-quaternary">
 			<div className="absolute h-full w-full top-0 bottom-0 left-0 right-0 text-white  backdrop-blur-sm flex items-center justify-center   ">
-				<div className="ml-4 h-full w-full flex flex-col p-2  font-extralight text-quaternary gap-2  ">
+				<div className=" h-full w-full flex flex-col p-2 pl-4 font-extralight text-quaternary gap-2  ">
 					<div className="w-full h-[10%]">
 						<NavSection
 							navSection={navSection}
@@ -27,7 +27,7 @@ export default function Banner({
 						/>
 					</div>
 
-					<div className=" w-full h-[80%] flex lg:gap-2 lg:items-start flex-col justify-center gap-0 items-center   ">
+					<div className="animate-fade-in-right w-full h-[80%] flex lg:gap-2 lg:items-start flex-col justify-center gap-0 items-center   animation-animation ">
 						<p className="font-extralight text-4xl">Hola mi nombre es</p>
 						<p className="lg:text-8xl font-medium text-6xl">Alexis Rojas</p>
 						<p className="font-extralight text-4xl">y soy</p>

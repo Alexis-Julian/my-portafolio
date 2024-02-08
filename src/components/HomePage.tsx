@@ -12,6 +12,7 @@ import { useRef } from "react";
 import AboutMe from "./AboutMe";
 import ReactHammer from "react-hammerjs";
 import { CreateSectionsType } from "@/app/shared/types";
+import SpinnerLoading from "./SpinnerLoading";
 
 function CreateLayout(
 	{ ancho, alto }: { alto: number; ancho: number },
@@ -19,7 +20,7 @@ function CreateLayout(
 ) {
 	const navSection = ["Portafolio", "Proyectos"];
 
-	if (alto < 960) navSection.push("Sobre mi");
+	if (ancho < 960) navSection.push("Sobre mi");
 
 	const screenTotal = 100 * navSection.length;
 
@@ -57,10 +58,10 @@ let index = 0;
 export default function FirstPage() {
 	//Mover logica de estilos a css
 
-	const [useTamano, setTamano] = useState<{ ancho: number; alto: number }>({
-		ancho: 0,
-		alto: 0,
-	});
+	const [useTamano, setTamano] = useState<{
+		ancho: number;
+		alto: number;
+	}>({ ancho: 0, alto: 0 });
 
 	useEffect(() => {
 		setTamano({
@@ -73,7 +74,6 @@ export default function FirstPage() {
 		useTamano,
 		CreateSections
 	);
-	console.log(Sections, translate, screenTotal);
 
 	const [useSection, setSection] = useState<Section>(Sections[0]);
 	const HandleSwipe = (event: any) => {
@@ -91,70 +91,75 @@ export default function FirstPage() {
 	};
 	return (
 		<>
-			<Pagination useSection={useSection} />
-			<ReactHammer onSwipe={HandleSwipe}>
-				<main
-					className={`lg:w-full lg:relative  lg:flex-col   z-50 h-full  absolute flex bg-quinary transition-all duration-1000 `}
-					style={{
-						transform:
-							useTamano.alto > 960
-								? `translateY(-${useSection.movement}%)`
-								: `translateX(-${useSection.movement}%)`,
-
-						height: useTamano.alto > 960 ? `${screenTotal}%` : "100%",
-						width: useTamano.alto < 960 ? `${screenTotal}%` : "100%",
-					}}
-				>
-					{/* Celular y Desktop */}
-					<div
-						className={`lg:grid lg:grid-cols-2 lg:gap-4 lg:p-2 | p-0   `}
+			{useTamano.ancho > 0 ? (
+				<ReactHammer onSwipe={HandleSwipe}>
+					<main
+						className={`lg:relative  lg:flex-col z-50 absolute flex bg-quinary transition-all duration-1000 `}
 						style={{
-							height: useTamano.alto > 960 ? `${translate}%` : "100%",
-							width: useTamano.alto < 960 ? `${translate}%` : "100%",
+							transform:
+								useTamano.ancho > 960
+									? `translateY(-${useSection.movement}%)`
+									: `translateX(-${useSection.movement}%)`,
+
+							height: useTamano.ancho > 960 ? `${screenTotal}%` : "100%",
+							width: useTamano.ancho < 960 ? `${screenTotal}%` : "100%",
 						}}
 					>
-						<Presentation
-							setSection={setSection}
-							navSection={Sections}
-							useSection={useSection}
-						/>
-						<div className=" lg:inline-block hidden	">
-							<Curriculum />
-						</div>
-					</div>
-
-					{/* Celular */}
-
-					<div
-						className={`p-[0.2px] relative lg:grid lg:grid-cols-2 `}
-						style={{
-							height: useTamano.alto > 960 ? `${translate}%` : "100%",
-							width: useTamano.alto < 960 ? `${translate}%` : "100%",
-						}}
-					>
-						<div className="h-full w-full border-4 border-tertiary rounded-md z-50 text-white relative  ">
-							{/* <Letter proyectos={proyectos} /> */}
+						{/* Celular y Desktop */}
+						<div
+							className={`lg:grid lg:grid-cols-2 lg:gap-4 lg:p-2 | p-0   `}
+							style={{
+								height: useTamano.ancho > 960 ? `${translate}%` : "100%",
+								width: useTamano.ancho < 960 ? `${translate}%` : "100%",
+							}}
+						>
+							<Presentation
+								setSection={setSection}
+								navSection={Sections}
+								useSection={useSection}
+							/>
+							<div className=" lg:inline-block hidden	">
+								<Curriculum />
+							</div>
 						</div>
 
-						<div className="hidden lg:inline-block lg:h-full lg:w-full z-50">
+						{/* Celular */}
+
+						<div
+							className={`p-[0.2px] relative lg:grid lg:grid-cols-2 `}
+							style={{
+								height: useTamano.ancho > 960 ? `${translate}%` : "100%",
+								width: useTamano.ancho < 960 ? `${translate}%` : "100%",
+							}}
+						>
+							<div className="h-full w-full border-4 border-tertiary rounded-md z-50 text-white relative  ">
+								{/* <Letter proyectos={proyectos} /> */}
+							</div>
+
+							<div className="hidden lg:inline-block lg:h-full lg:w-full z-50">
+								<AboutMe />
+							</div>
+
+							<div className="absolute border-4 border-white rounded-lg  h-full w-full  blur-sm phone:bg-[url('/protruding-squares.svg')]  z-10  top-0"></div>
+						</div>
+						{/* Celular */}
+
+						<div
+							className={`overflow-hidden lg:hidden inline-block`}
+							style={{
+								height: useTamano.ancho > 960 ? `${translate}%` : "100%",
+								width: useTamano.ancho < 960 ? `${translate}%` : "100%",
+							}}
+						>
 							<AboutMe />
 						</div>
-
-						<div className="absolute border-4 border-white rounded-lg  h-full w-full  blur-sm phone:bg-[url('/protruding-squares.svg')]  z-10  top-0"></div>
-					</div>
-					{/* Celular */}
-
-					<div
-						className={`overflow-hidden lg:hidden inline-block`}
-						style={{
-							height: useTamano.alto > 960 ? `${translate}%` : "100%",
-							width: useTamano.alto < 960 ? `${translate}%` : "100%",
-						}}
-					>
-						<AboutMe />
-					</div>
-				</main>
-			</ReactHammer>
+					</main>
+				</ReactHammer>
+			) : (
+				<div className="h-full w-full flex items-center justify-center ">
+					<SpinnerLoading />
+				</div>
+			)}
 		</>
 	);
 }

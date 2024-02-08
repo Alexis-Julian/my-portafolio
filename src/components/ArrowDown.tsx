@@ -7,7 +7,7 @@ export default function ArrowDown({
 	setSection: Dispatch<SetStateAction<Section>>;
 }) {
 	function HandleMovementSection() {
-		/* setSection(Sections[1]); */
+		setSection({ index: 1, movement: "50", name: "Proyectos" });
 	}
 	return (
 		<div

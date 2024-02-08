@@ -34,10 +34,24 @@ const config: Config = withMT({
 				quaternary: "#F8E559" /* 4  Amarillo */,
 				quinary: "#1a1a1a" /* 5 Negro */,
 			},
+			animation: {
+				"fade-in-right": "fade-in-right 1s ease-in-out ",
+			},
+
 			keyframes: {
 				curriculum: {
 					"0%,100%": {
 						transform: "translateX(100%)",
+					},
+				},
+				"fade-in-right": {
+					"0%": {
+						opacity: "0",
+						transform: "translateX(-20px)",
+					},
+					"100%": {
+						opacity: "1",
+						transform: "translateX(0)",
 					},
 				},
 			},
