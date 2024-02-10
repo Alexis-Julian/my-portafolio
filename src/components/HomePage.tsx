@@ -58,6 +58,7 @@ let index = 0;
 
 export default function FirstPage() {
 	//Mover logica de estilos a css
+	const [openCurriculum, setCurriculum] = useState<boolean>(false);
 
 	const [useTamano, setTamano] = useState<{
 		ancho: number;
@@ -90,6 +91,7 @@ export default function FirstPage() {
 			setSection(Sections[index]);
 		}
 	};
+
 	return (
 		<>
 			{useTamano.ancho > 0 ? (
@@ -99,6 +101,8 @@ export default function FirstPage() {
 							navSection={Sections}
 							useSection={useSection}
 							setSection={setSection}
+							setCurriculum={setCurriculum}
+							useCurriculum={openCurriculum}
 						/>
 					</div>
 					<ReactHammer onSwipe={HandleSwipe}>
@@ -116,7 +120,7 @@ export default function FirstPage() {
 						>
 							{/* Celular y Desktop */}
 							<div
-								className={`lg:grid lg:grid-cols-2 lg:gap-4 lg:p-2 | p-0   `}
+								className={`lg:grid lg:grid-cols-2 lg:gap-4 lg:p-2 | p-0  relative `}
 								style={{
 									height: useTamano.ancho > 960 ? `${translate}%` : "100%",
 									width: useTamano.ancho < 960 ? `${translate}%` : "100%",
@@ -127,8 +131,22 @@ export default function FirstPage() {
 									navSection={Sections}
 									useSection={useSection}
 								/>
-								<div className=" lg:inline-block hidden	">
-									<Curriculum />
+
+								{/* <div className=" lg:inline-block  ">
+									<Curriculum
+										setCurriculum={setCurriculum}
+										useCurriculum={openCurriculum}
+									/>
+								</div> */}
+								<div
+									className={` w-full h-full top-0 z-[9999] absolute transition-all  ${
+										openCurriculum ? "translate-y-[0%]" : "translate-y-[100%]"
+									}lg:translate-y-[0%] lg:z-[9999] lg lg:inline-block lg:relative  lg:w-full   lg:h-full`}
+								>
+									<Curriculum
+										setCurriculum={setCurriculum}
+										useCurriculum={openCurriculum}
+									/>
 								</div>
 							</div>
 

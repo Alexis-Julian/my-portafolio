@@ -24,10 +24,14 @@ export default function BurgerMenu({
 	navSection,
 	useSection,
 	setSection,
+	setCurriculum,
+	useCurriculum,
 }: {
 	navSection: Array<Section>;
 	useSection: Section;
 	setSection: Dispatch<SetStateAction<Section>>;
+	setCurriculum: Dispatch<SetStateAction<boolean>>;
+	useCurriculum: boolean;
 }) {
 	const RedesSociales = [
 		{ name: "Github", url: "" },
@@ -50,6 +54,14 @@ export default function BurgerMenu({
 
 	const handleOpen = (value: any) => {
 		setOpen(open === value ? 0 : value);
+	};
+
+	const HandleCurriculum = (index: number) => {
+		console.log(Curriculum[index]);
+		if (Curriculum[index].name === "Ver sin descargar") {
+			console.log("Probando");
+			setCurriculum(!useCurriculum);
+		}
 	};
 
 	return (
@@ -102,7 +114,11 @@ export default function BurgerMenu({
 												<ListItem
 													placeholder={""}
 													key={index}
-													className="text-white text-2xl"
+													className={` text-2xl ${
+														useSection.index == index
+															? "text-quaternary"
+															: "text-white"
+													}`}
 													onClick={() => HandleMoveSection(index)}
 												>
 													<ListItemPrefix placeholder={""}>
@@ -210,6 +226,7 @@ export default function BurgerMenu({
 													placeholder={""}
 													key={index}
 													className="text-white text-2xl"
+													onClick={() => HandleCurriculum(index)}
 												>
 													<ListItemPrefix placeholder={""}>
 														<ChevronRightIcon
