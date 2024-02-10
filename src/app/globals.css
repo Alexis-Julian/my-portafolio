@@ -93,6 +93,9 @@ body {
 	}
 }
 
+.outset {
+	border: 4px black outset;
+}
 .double {
 	border: 4px white double;
 }
@@ -258,4 +261,13 @@ body {
 
 .changePrefix > button > span {
 	color: white;
+}
+
+.backgroundGradient {
+	background: rgb(248, 229, 89);
+	background: radial-gradient(
+		circle,
+		rgba(248, 229, 89, 1) 0%,
+		rgba(26, 26, 26, 1) 100%
+	);
 }

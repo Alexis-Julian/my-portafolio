@@ -17,7 +17,6 @@ import {
 	ListItem,
 	AccordionHeader,
 	ListItemPrefix,
-	Typography,
 	AccordionBody,
 } from "@material-tailwind/react";
 
@@ -35,31 +34,18 @@ export default function BurgerMenu({
 		{ name: "Linkedin", url: "" },
 	];
 	const Curriculum = [{ name: "Ver sin descargar" }, { name: "Descargar" }];
-	const [useHandleMenu, setHandleMenu] = useState(false);
 
-	const [useItemsOpen, setItemsOpen] = useState<any>([
-		{ name: "Secciones", items: navSection, open: false },
-		{ name: "R. Sociales", items: RedesSociales, open: false },
-		{ name: "Curriculum", items: Curriculum, open: false },
-	]);
+	const [useHandleMenu, setHandleMenu] = useState(false);
 
 	function HandleMenu() {
 		setHandleMenu(!useHandleMenu);
 	}
 
-	function HandleOpenMenu(index: number) {
-		const menu: any = [];
-		useItemsOpen.map((ele: any, i: number) => {
-			if (useItemsOpen[index].name == ele.name) {
-				useItemsOpen[index].open = !useItemsOpen[index].open;
-				menu.push(useItemsOpen[index]);
-			} else {
-				useItemsOpen[i].open = false;
-				menu.push(useItemsOpen[i]);
-			}
-		});
-		setItemsOpen(menu);
+	function HandleMoveSection(index: number) {
+		setSection(navSection[index]);
+		setHandleMenu(!useHandleMenu);
 	}
+
 	const [open, setOpen] = useState<any>(0);
 
 	const handleOpen = (value: any) => {
@@ -72,7 +58,7 @@ export default function BurgerMenu({
 				<div className="bg-[url('/burger_icon.svg')] bg-center bg-no-repeat h-full w-full "></div>
 			</div>
 			<div
-				className={`absolute h-full w-[100%]  top-0 left-0 right-0 bottom-0 z-50   transition-all duration-500   flex items-center justify-center ${
+				className={`absolute h-screen w-screen   top-0 left-0 right-0 bottom-0 z-50   transition-all duration-500   flex items-center justify-center ${
 					useHandleMenu ? "translate-x-[0%]" : "translate-x-[-101%]"
 				}`}
 			>
@@ -111,12 +97,13 @@ export default function BurgerMenu({
 								</ListItem>
 								<AccordionBody className="py-1">
 									<List className="p-0" placeholder={""}>
-										{navSection.map((item, index) => {
+										{navSection.map((item, index: number) => {
 											return (
 												<ListItem
 													placeholder={""}
 													key={index}
 													className="text-white text-2xl"
+													onClick={() => HandleMoveSection(index)}
 												>
 													<ListItemPrefix placeholder={""}>
 														<ChevronRightIcon
@@ -249,7 +236,7 @@ export default function BurgerMenu({
 							<div className="test h-full w-full rounded-sm blur-sm absolute  top-0 -z-10"></div>
 						</div>
 					</div>
-					<div className="h-full w-full absolute top-0 left-0 test  -z-50 blur-[10px]   "></div>
+					<div className="h-full w-full absolute top-0 left-0 test  -z-50    "></div>
 				</div>
 			</div>
 		</>
