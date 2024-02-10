@@ -132,16 +132,10 @@ export default function FirstPage() {
 									useSection={useSection}
 								/>
 
-								{/* <div className=" lg:inline-block  ">
-									<Curriculum
-										setCurriculum={setCurriculum}
-										useCurriculum={openCurriculum}
-									/>
-								</div> */}
 								<div
 									className={` w-full h-full top-0 z-[9999] absolute transition-all  ${
 										openCurriculum ? "translate-y-[0%]" : "translate-y-[100%]"
-									}lg:translate-y-[0%] lg:z-[9999] lg lg:inline-block lg:relative  lg:w-full   lg:h-full`}
+									} lg:translate-y-[0%] lg:z-[9999]  lg:inline-block lg:relative  lg:w-full   lg:h-full`}
 								>
 									<Curriculum
 										setCurriculum={setCurriculum}

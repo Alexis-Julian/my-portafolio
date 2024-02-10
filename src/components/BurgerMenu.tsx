@@ -59,8 +59,8 @@ export default function BurgerMenu({
 	const HandleCurriculum = (index: number) => {
 		console.log(Curriculum[index]);
 		if (Curriculum[index].name === "Ver sin descargar") {
-			console.log("Probando");
 			setCurriculum(!useCurriculum);
+			setHandleMenu(!useHandleMenu);
 		}
 	};
 
