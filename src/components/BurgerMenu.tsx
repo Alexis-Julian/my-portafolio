@@ -2,6 +2,24 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import NavSection from "./NavSections";
 import { Section } from "@/app/shared/types";
+import {
+	ChevronDownIcon,
+	PresentationChartBarIcon,
+	ChevronRightIcon,
+	ShoppingBagIcon,
+	GlobeAltIcon,
+	ClipboardDocumentIcon,
+	HomeIcon,
+} from "@heroicons/react/16/solid";
+import {
+	List,
+	Accordion,
+	ListItem,
+	AccordionHeader,
+	ListItemPrefix,
+	Typography,
+	AccordionBody,
+} from "@material-tailwind/react";
 
 export default function BurgerMenu({
 	navSection,
@@ -12,13 +30,17 @@ export default function BurgerMenu({
 	useSection: Section;
 	setSection: Dispatch<SetStateAction<Section>>;
 }) {
-	const RedesSociales = [{ name: "Github" }, { name: "Linkedin" }];
-
+	const RedesSociales = [
+		{ name: "Github", url: "" },
+		{ name: "Linkedin", url: "" },
+	];
+	const Curriculum = [{ name: "Ver sin descargar" }, { name: "Descargar" }];
 	const [useHandleMenu, setHandleMenu] = useState(false);
 
 	const [useItemsOpen, setItemsOpen] = useState<any>([
 		{ name: "Secciones", items: navSection, open: false },
-		{ name: "R.Sociales", items: RedesSociales, open: false },
+		{ name: "R. Sociales", items: RedesSociales, open: false },
+		{ name: "Curriculum", items: Curriculum, open: false },
 	]);
 
 	function HandleMenu() {
@@ -38,6 +60,11 @@ export default function BurgerMenu({
 		});
 		setItemsOpen(menu);
 	}
+	const [open, setOpen] = useState<any>(0);
+
+	const handleOpen = (value: any) => {
+		setOpen(open === value ? 0 : value);
+	};
 
 	return (
 		<>
@@ -50,58 +77,175 @@ export default function BurgerMenu({
 				}`}
 			>
 				<div className="  h-full w-full relative ">
-					<ul className="h-full w-[80%] text-2xl flex border-r-2 border-quaternary flex-col z-50 gap-7 p-3  relative">
-						{useItemsOpen.map((item: any, index: number) => {
-							return (
-								<li
-									className={`transition-all font-medium 
-									${!useItemsOpen[0].open && !useItemsOpen[1].open && "translate-y-[0%]"}   
-									${useItemsOpen[index].open ? `translate-y-0` : `translate-y-[50%]`}  
-									${useItemsOpen[index].name == "Secciones" && "translate-y-[0%]"}
-									`}
-									key={index}
+					<ul className="h-full w-[80%]  flex border-r-2 border-quaternary flex-col z-50 gap-14 p-3  relative">
+						<List placeholder={""} className="h-full gap-4">
+							<Accordion
+								placeholder={""}
+								open={open === 1}
+								icon={
+									<ChevronDownIcon
+										strokeWidth={2.5}
+										className={`mx-auto h-4 w-4 transition-transform ${
+											open === 1 ? "rotate-180" : ""
+										}`}
+									/>
+								}
+							>
+								<ListItem
+									className="p-0 changePrefix bg-transparent hover:bg-transparent focus:opacity-1 active:opacity-100 "
+									selected={open === 1}
+									placeholder={""}
 								>
-									<div className="h-full">
-										<p
-											className="text-5xl flex  items-center gap-4"
-											onClick={() => HandleOpenMenu(index)}
-										>
-											<i className="not-italic text-2xl h-full text-white ">
-												{useItemsOpen[index].open ? "v" : ">"}
-											</i>
-											<i className="not-italic">{item.name}</i>
+									<AccordionHeader
+										onClick={() => handleOpen(1)}
+										className="border-b-0 p-3"
+										placeholder={""}
+									>
+										<ListItemPrefix placeholder={""}>
+											<HomeIcon className="h-5 w-5 text-white text-2xl" />
+										</ListItemPrefix>
+										<p className="mr-auto font-bold text-3xl text-white">
+											Secciones
 										</p>
-										<div
-											className={`flex flex-col mt-[5%] ml-[10%] gap-10   h-full  	 ${
-												useItemsOpen[index].open == false && "hidden"
-											}`}
-										>
-											{item.items.map((item: any, index: number) => {
-												return (
-													<p key={index} className=" flex items-center ">
-														<i className="not-italic   text-4xl animate-fade-in-right font-extralight text-white">
-															{item.name}
-														</i>
-													</p>
-												);
-											})}
-										</div>
-									</div>
-								</li>
-							);
-						})}
+									</AccordionHeader>
+								</ListItem>
+								<AccordionBody className="py-1">
+									<List className="p-0" placeholder={""}>
+										{navSection.map((item, index) => {
+											return (
+												<ListItem
+													placeholder={""}
+													key={index}
+													className="text-white text-2xl"
+												>
+													<ListItemPrefix placeholder={""}>
+														<ChevronRightIcon
+															strokeWidth={3}
+															className="h-3 w-5"
+														/>
+													</ListItemPrefix>
+													{item.name}
+												</ListItem>
+											);
+										})}
+									</List>
+								</AccordionBody>
+							</Accordion>
+
+							<Accordion
+								placeholder={""}
+								open={open === 2}
+								icon={
+									<ChevronDownIcon
+										strokeWidth={2.5}
+										className={`mx-auto h-4 w-4 transition-transform ${
+											open === 2 ? "rotate-180" : ""
+										}`}
+									/>
+								}
+							>
+								<ListItem
+									className="p-0 changePrefix bg-transparent  hover:bg-transparent focus:opacity-1 active:opacity-100"
+									selected={open === 2}
+									placeholder={""}
+								>
+									<AccordionHeader
+										onClick={() => handleOpen(2)}
+										className="border-b-0 p-3"
+										placeholder={""}
+									>
+										<ListItemPrefix placeholder={""}>
+											<GlobeAltIcon className="h-5 w-5 text-white" />
+										</ListItemPrefix>
+										<p className="mr-auto  font-bold text-white text-3xl">
+											R. Sociales
+										</p>
+									</AccordionHeader>
+								</ListItem>
+								<AccordionBody className="py-1">
+									<List className="p-0" placeholder={""}>
+										{RedesSociales.map((red, index) => {
+											return (
+												<ListItem
+													placeholder={""}
+													key={index}
+													className="text-white text-2xl"
+												>
+													<ListItemPrefix placeholder={""} className="">
+														<ChevronRightIcon
+															strokeWidth={3}
+															className="h-3 w-5"
+														/>
+													</ListItemPrefix>
+													{red.name}
+												</ListItem>
+											);
+										})}
+									</List>
+								</AccordionBody>
+							</Accordion>
+
+							<Accordion
+								placeholder={""}
+								open={open === 3}
+								icon={
+									<ChevronDownIcon
+										strokeWidth={2.5}
+										className={`mx-auto h-4 w-4 transition-transform ${
+											open === 2 ? "rotate-180" : ""
+										}`}
+									/>
+								}
+							>
+								<ListItem
+									className="p-0 bg-transparent changePrefix  hover:bg-transparent focus:opacity-1 active:opacity-100"
+									selected={open === 3}
+									placeholder={""}
+								>
+									<AccordionHeader
+										onClick={() => handleOpen(3)}
+										className="border-b-0 p-3"
+										placeholder={""}
+									>
+										<ListItemPrefix placeholder={""}>
+											<ClipboardDocumentIcon className="h-5 w-5 text-white" />
+										</ListItemPrefix>
+										<p className="mr-auto font-bold text-white text-3xl">
+											Curriculum
+										</p>
+									</AccordionHeader>
+								</ListItem>
+								<AccordionBody className="py-1">
+									<List className="p-0" placeholder={""}>
+										{Curriculum.map((item, index) => {
+											return (
+												<ListItem
+													placeholder={""}
+													key={index}
+													className="text-white text-2xl"
+												>
+													<ListItemPrefix placeholder={""}>
+														<ChevronRightIcon
+															strokeWidth={3}
+															className="h-3 w-5"
+														/>
+													</ListItemPrefix>
+													{item.name}
+												</ListItem>
+											);
+										})}
+									</List>
+								</AccordionBody>
+							</Accordion>
+						</List>
 					</ul>
-					<div className="absolute bottom-0  w-[80%] h-[10%] rounded-sm p-2 ">
-						<div className="text-white h-full w-full text-4xl text-center  flex items-center justify-center">
-							<p>Curriculum</p>
-						</div>
-					</div>
+
 					<div
-						className="absolute right-0  h-full w-[20%] z-50  top-0 backdrop-blur-lg    p-1  bg-quinary"
+						className="absolute right-0  h-full w-[20%] z-50  top-0 backdrop-blur-lg    p-1    bg-quinary"
 						onClick={() => HandleMenu()}
 					>
-						<div className="h-full w-full relative flex items-center justify-center">
-							<div className="bg-[url('/cancel_icon.svg')] bg-center  z-50 h-[40px] w-[40px]  "></div>
+						<div className="h-full w-full relative flex items-center justify-center ">
+							<div className="bg-[url('/cancel_icon.svg')] bg-center  z-50 h-[30px] w-[30px] rounded-full "></div>
 							<div className="test h-full w-full rounded-sm blur-sm absolute  top-0 -z-10"></div>
 						</div>
 					</div>

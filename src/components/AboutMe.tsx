@@ -17,7 +17,7 @@ export default function AboutMe() {
 				<div className=" flex items-start justify-center grow-1">
 					<div className="h-[300px] w-[300px] flex items-center justify-center ">
 						<span className="loader h-full w-full relative     ">
-							<div className="h-[90%] w-[90%]   bg-[url('/stikcer-transformed.png')]  bg-cover bg-bottom z-50 "></div>
+							<div className="h-[90%] w-[90%]   bg-[url('/profile.jpg')] bg-center rounded-full    z-50 "></div>
 							<div className="h-full w-full top-0 left-0  blur-lg absolute -z-50 double  rounded-full"></div>
 						</span>
 					</div>

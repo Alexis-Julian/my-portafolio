@@ -255,3 +255,7 @@ body {
 .test {
 	background-color: rgba(0, 0, 0, 0.9);
 }
+
+.changePrefix > button > span {
+	color: white;
+}
