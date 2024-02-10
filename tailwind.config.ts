@@ -36,12 +36,36 @@ const config: Config = withMT({
 			},
 			animation: {
 				"fade-in-right": "fade-in-right 1s ease-in-out ",
+				wobble: "wobble 1s ease-in-out",
 			},
 
 			keyframes: {
 				curriculum: {
 					"0%,100%": {
 						transform: "translateX(100%)",
+					},
+				},
+				wobble: {
+					"0%": {
+						transform: "translateX(0)",
+					},
+					"15%": {
+						transform: "translateX(-20px)",
+					},
+					"30%": {
+						transform: "translateX(20%)",
+					},
+					"45%": {
+						transform: "translateX(-15%)",
+					},
+					"60%": {
+						transform: "translateX(20px)",
+					},
+					"75%": {
+						transform: "translateX(-5%)",
+					},
+					"100%": {
+						transform: "translateX(0)",
 					},
 				},
 				"fade-in-right": {
