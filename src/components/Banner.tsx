@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction } from "react";
 import ArrowDown from "./ArrowDown";
 import NavSection from "./NavSections";
 import { useState } from "react";
-import { Section } from "@/app/shared/types";
+import { Section } from "@/shared/types";
 import BurgerMenu from "./BurgerMenu";
 
 export default function Banner({

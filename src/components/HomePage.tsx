@@ -7,11 +7,11 @@ import NavSection from "./NavSections";
 import Pagination from "./Pagination";
 import { useEffect, useState } from "react";
 import Presentation from "./Presentation";
-import { Section } from "@/app/shared/types";
+import { Section } from "@/shared/types";
 import { useRef } from "react";
 import AboutMe from "./AboutMe";
 import ReactHammer from "react-hammerjs";
-import { CreateSectionsType } from "@/app/shared/types";
+import { CreateSectionsType } from "@/shared/types";
 import SpinnerLoading from "./SpinnerLoading";
 import BurgerMenu from "./BurgerMenu";
 
@@ -79,7 +79,7 @@ export default function FirstPage() {
 
 	const [useSection, setSection] = useState<Section>(Sections[0]);
 	const HandleSwipe = (event: any) => {
-		if (useTamano.alto > 960) return null;
+		if (useTamano.ancho > 960) return null;
 
 		if (event.direction === 2 && index < Sections.length - 1) {
 			// Deslizamiento hacia la izquierda
@@ -153,8 +153,10 @@ export default function FirstPage() {
 									width: useTamano.ancho < 960 ? `${translate}%` : "100%",
 								}}
 							>
-								<div className="h-full w-full border-2 border-quaternary z-50 text-white relative  ">
-									{/* <Letter proyectos={proyectos} /> */}
+								<div className="h-full w-full border-2 border-quaternary z-50 text-white relative flex items-center justify-center  ">
+									<div className="h-[90%] w-[90%]  z-[999] bg-red-400">
+										<Letter proyectos={proyectos} />
+									</div>
 								</div>
 
 								<div className="hidden lg:inline-block lg:h-full lg:w-full z-50">

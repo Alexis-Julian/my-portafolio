@@ -1,7 +1,7 @@
 "use client";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import NavSection from "./NavSections";
-import { Section } from "@/app/shared/types";
+import { Section } from "@/shared/types";
 import {
 	ChevronDownIcon,
 	PresentationChartBarIcon,

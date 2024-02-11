@@ -8,7 +8,8 @@ export default function Curriculum({
 	useCurriculum: boolean;
 }) {
 	return (
-		<div className="h-full w-full bg-[url('/CurriculumNew.jpg')] bg-contain  bg-center bg-no-repeat  bg-[#1a1a1a] rounded-sm border-2 border-quaternary relative">
+		<div className="h-full w-full bg-[url('/probandoo.svg')]  bg-contain  bg-center bg-no-repeat  rounded-sm border-2 border-quaternary relative">
+			<div className="w-[100%] h-full absolute top-0 bg-[url('/probando4.3.svg')]  bg-cover bg-center	 -z-50"></div>
 			<div className="absolute top-0 right-0 h-[50px] w-[50px]  lg:hidden ">
 				<XMarkIcon
 					className="text-quaternary "

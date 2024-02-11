@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import Letter from "./Letter";
 import NavSection from "./NavSections";
-import { Section } from "@/app/shared/types";
+import { Section } from "@/shared/types";
 
 export default function DeployProjects({
 	setSection,

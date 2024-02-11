@@ -1,14 +1,14 @@
 import { Dispatch, SetStateAction } from "react";
 import Banner from "./Banner";
 import Curriculum from "./Curriculum";
-import { Section } from "@/app/shared/types";
+import { Section } from "@/shared/types";
 
 export default function Presentation({
 	setSection,
 	navSection,
 	useSection,
 }: {
-	setSection: Dispatch<SetStateAction<Section>>;
+	setSection: Dispatch<SetStateAction<Section | any>>;
 	navSection: Array<Section>;
 	useSection: Section;
 }) {

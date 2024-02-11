@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { Section } from "@/app/shared/types";
+import { Section } from "@/shared/types";
 // import { Sections } from "./HomePage";
 export default function ArrowDown({
 	setSection,
