@@ -64,7 +64,7 @@ export default function DeployProjects({
 					</div>
 					<div className="h-full w-full grid  overflow-hidden items-center justify-center border-l-2  border-quaternary">
 						<div className="h-full w-full flex items-center justify-center ">
-							<Letter proyectos={proyectos} />
+							{/* <Letter proyectos={proyectos} /> */}
 						</div>
 					</div>
 				</div>

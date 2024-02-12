@@ -53,7 +53,7 @@ async function getURL(URL: string) {
 	}
 }
 
-export async function GET(req: Request) {
+export async function GET(req: Request): Promise<any> {
 	try {
 		if (fs.existsSync("src/data/repositories.json")) {
 			const file = JSON.parse(
@@ -88,8 +88,12 @@ export async function GET(req: Request) {
 				statusText: "OK",
 			});
 		}
-	} catch (e) {
-		// console.log(e);
-		return NextResponse.json({ statusCode: 400, message: "Error Syntax" });
+	} catch (error) {
+		const errorMessage =
+			error instanceof Error ? error.message : "An error occured";
+		return NextResponse.json(
+			{ message: errorMessage, ok: false },
+			{ status: 503 }
+		);
 	}
 }
