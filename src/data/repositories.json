@@ -1,0 +1,138 @@
+{
+	"lastUpdate": "2024-02-12T10:28:57.405Z",
+	"repositories": [
+		{
+			"name": "Alexis-Julian",
+			"html_url": "https://github.com/Alexis-Julian/Alexis-Julian",
+			"created_at": "2023-02-02T01:25:02Z",
+			"pushed_at": "2023-08-01T19:55:03Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/Alexis-Julian/commits{/sha}"
+		},
+		{
+			"name": "BackEnd",
+			"html_url": "https://github.com/Alexis-Julian/BackEnd",
+			"created_at": "2023-04-22T10:18:16Z",
+			"pushed_at": "2023-09-27T09:00:08Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/BackEnd/commits{/sha}"
+		},
+		{
+			"name": "my-portafolio",
+			"html_url": "https://github.com/Alexis-Julian/my-portafolio",
+			"created_at": "2024-02-04T23:42:31Z",
+			"pushed_at": "2024-02-11T13:50:24Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/my-portafolio/commits{/sha}"
+		},
+		{
+			"name": "Pixel-Art-Multiplayer",
+			"html_url": "https://github.com/Alexis-Julian/Pixel-Art-Multiplayer",
+			"created_at": "2024-01-01T23:54:26Z",
+			"pushed_at": "2024-01-02T00:03:41Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/Pixel-Art-Multiplayer/commits{/sha}"
+		},
+		{
+			"name": "Pixel-Game-Multiplayer-NextJs",
+			"html_url": "https://github.com/Alexis-Julian/Pixel-Game-Multiplayer-NextJs",
+			"created_at": "2024-01-03T02:54:24Z",
+			"pushed_at": "2024-01-03T02:54:52Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/Pixel-Game-Multiplayer-NextJs/commits{/sha}"
+		},
+		{
+			"name": "project_calculator",
+			"html_url": "https://github.com/Alexis-Julian/project_calculator",
+			"created_at": "2023-08-04T20:59:22Z",
+			"pushed_at": "2023-08-06T00:15:06Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/project_calculator/commits{/sha}"
+		},
+		{
+			"name": "project_discordClone",
+			"html_url": "https://github.com/Alexis-Julian/project_discordClone",
+			"created_at": "2023-09-02T22:22:31Z",
+			"pushed_at": "2023-09-03T21:33:21Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/project_discordClone/commits{/sha}"
+		},
+		{
+			"name": "project_react_ecommerce",
+			"html_url": "https://github.com/Alexis-Julian/project_react_ecommerce",
+			"created_at": "2022-10-27T02:32:02Z",
+			"pushed_at": "2022-12-12T09:56:39Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/project_react_ecommerce/commits{/sha}"
+		},
+		{
+			"name": "project_snake",
+			"html_url": "https://github.com/Alexis-Julian/project_snake",
+			"created_at": "2023-04-23T07:56:51Z",
+			"pushed_at": "2023-05-19T22:01:27Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/project_snake/commits{/sha}"
+		},
+		{
+			"name": "proyecto-SweetHome",
+			"html_url": "https://github.com/Alexis-Julian/proyecto-SweetHome",
+			"created_at": "2024-01-23T01:41:03Z",
+			"pushed_at": "2024-01-23T22:31:24Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/proyecto-SweetHome/commits{/sha}"
+		},
+		{
+			"name": "proyecto_mailing",
+			"html_url": "https://github.com/Alexis-Julian/proyecto_mailing",
+			"created_at": "2023-11-27T22:45:52Z",
+			"pushed_at": "2024-02-03T02:39:09Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/proyecto_mailing/commits{/sha}"
+		},
+		{
+			"name": "proyecto_mailing_back",
+			"html_url": "https://github.com/Alexis-Julian/proyecto_mailing_back",
+			"created_at": "2023-11-27T22:46:25Z",
+			"pushed_at": "2024-02-03T02:38:35Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/proyecto_mailing_back/commits{/sha}"
+		},
+		{
+			"name": "Proyecto_meli",
+			"html_url": "https://github.com/Alexis-Julian/Proyecto_meli",
+			"created_at": "2024-01-29T11:24:39Z",
+			"pushed_at": "2024-01-29T11:25:22Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/Proyecto_meli/commits{/sha}"
+		},
+		{
+			"name": "proyecto_mely_react",
+			"html_url": "https://github.com/Alexis-Julian/proyecto_mely_react",
+			"created_at": "2024-01-30T06:20:44Z",
+			"pushed_at": "2024-01-30T06:45:46Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/proyecto_mely_react/commits{/sha}"
+		},
+		{
+			"name": "proyecto_only_js",
+			"html_url": "https://github.com/Alexis-Julian/proyecto_only_js",
+			"created_at": "2022-10-24T02:13:06Z",
+			"pushed_at": "2022-10-24T16:26:30Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/proyecto_only_js/commits{/sha}"
+		},
+		{
+			"name": "proyecto_raul_client",
+			"html_url": "https://github.com/Alexis-Julian/proyecto_raul_client",
+			"created_at": "2023-09-15T21:05:20Z",
+			"pushed_at": "2023-09-22T06:54:27Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/proyecto_raul_client/commits{/sha}"
+		},
+		{
+			"name": "proyecto_raul_server",
+			"html_url": "https://github.com/Alexis-Julian/proyecto_raul_server",
+			"created_at": "2023-09-15T21:02:24Z",
+			"pushed_at": "2023-11-21T20:23:23Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/proyecto_raul_server/commits{/sha}"
+		},
+		{
+			"name": "RitmoMusicaArduino",
+			"html_url": "https://github.com/Alexis-Julian/RitmoMusicaArduino",
+			"created_at": "2023-08-05T06:09:36Z",
+			"pushed_at": "2023-08-05T06:14:49Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/RitmoMusicaArduino/commits{/sha}"
+		},
+		{
+			"name": "TP3",
+			"html_url": "https://github.com/Alexis-Julian/TP3",
+			"created_at": "2022-09-13T20:52:55Z",
+			"pushed_at": "2022-10-15T21:53:49Z",
+			"commits_url": "https://api.github.com/repos/Alexis-Julian/TP3/commits{/sha}"
+		}
+	]
+}

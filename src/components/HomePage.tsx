@@ -1,17 +1,11 @@
 "use client";
-import Banner from "./Banner";
 import Curriculum from "./Curriculum";
-import DeployProjects from "./DeployProjects";
 import Letter from "./Letter";
-import NavSection from "./NavSections";
-import Pagination from "./Pagination";
 import { useEffect, useState } from "react";
 import Presentation from "./Presentation";
-import { Section } from "@/shared/types";
-import { useRef } from "react";
+import { Repository, Section } from "@/shared/types";
 import AboutMe from "./AboutMe";
 import ReactHammer from "react-hammerjs";
-import { CreateSectionsType } from "@/shared/types";
 import SpinnerLoading from "./SpinnerLoading";
 import BurgerMenu from "./BurgerMenu";
 
@@ -41,22 +35,13 @@ function CreateSections(
 	return { Sections, translate, screenTotal };
 }
 
-const proyectos = [
-	"Back-End Ecomeerce",
-	"Back-End Ecomeerce",
-	"Back-End Ecomeerce",
-	"Back-End Ecomeerce",
-	"Back-End Ecomeerce",
-	"Back-End Ecomeerce",
-	"Back-End Ecomeerce",
-	"Back-End Ecomeerce",
-	"Back-End Ecomeerce",
-	"Back-End Ecomeerce",
-];
-
 let index = 0;
 
-export default function FirstPage() {
+export default function FirstPage({
+	repositories,
+}: {
+	repositories: Repository[] | null;
+}) {
 	//Mover logica de estilos a css
 	const [openCurriculum, setCurriculum] = useState<boolean>(false);
 
@@ -153,9 +138,9 @@ export default function FirstPage() {
 									width: useTamano.ancho < 960 ? `${translate}%` : "100%",
 								}}
 							>
-								<div className="h-full w-full border-2 border-quaternary z-50 text-white relative flex items-center justify-center  ">
-									<div className="h-[90%] w-[90%]  z-[999] bg-red-400">
-										<Letter proyectos={proyectos} />
+								<div className="overflow-hidden h-full w-full border-2 border-quaternary z-50 text-white relative flex items-center justify-center  ">
+									<div className="h-[90%] w-[90%]  z-[999]  overflow-hidden">
+										<Letter repositories={repositories} />
 									</div>
 								</div>
 
