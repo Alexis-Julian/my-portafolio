@@ -28,9 +28,9 @@ export default function DefaultTimeline({
 			placeholder={""}
 			className="h-full w-full overflow-y-scroll bg-transparent  "
 		>
-			<table className="w-full min-w-max table-auto text-left ">
+			<table className="w-full min-w-max table-auto text-left   ">
 				<thead>
-					<tr className="  text-quaternary">
+					<tr className="text-quaternary [&>*:nth-child(n+3)]:hidden    ">
 						{TABLE_HEAD.map((head, index: number) => (
 							<th
 								key={head}
@@ -49,14 +49,14 @@ export default function DefaultTimeline({
 						))}
 					</tr>
 				</thead>
-				<tbody>
+				<tbody className="[&>*:nth-child(n+5)]:hidden  ">
 					{repositories.map(
 						({ name, html_url, created_at, pushed_at, commits_url }, index) => {
 							const fechas = [created_at, pushed_at].map((e) => ParsingDate(e));
 							return (
 								<tr
 									key={name}
-									className="even:bg-quinary backdrop-blur-md text-white hover:bg-tertiary/5 hover:text-quaternary lg:animate-fade-in-right	  transition-all"
+									className="[&>*:nth-child(n+3)]:hidden even:bg-quinary backdrop-blur-md max-h-10 text-white hover:bg-tertiary/5 hover:text-quaternary lg:animate-fade-in-right	  transition-all"
 								>
 									<td className="p-4">
 										<p color="blue-gray" className="font-normal">
