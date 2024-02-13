@@ -20,7 +20,7 @@ export default function DefaultTimeline({ repositories }: { repositories: Reposi
   }
   return (
     <section className="w-full bg-quinary h-full rounded-lg border-[0.1px] border-secondary/45">
-      <div className=" [&>*:nth-child(n+3)]:hidden lg:[&>*:nth-child(n+3)]:flex  text-xl grid grid-cols-2 lg:grid-cols-4 h-[10%]">
+      <div className=" [&>*:nth-child(n+3)]:hidden lg:[&>*:nth-child(n+3)]:flex  text-xl md:text-lg grid grid-cols-2 lg:grid-cols-4 h-[10%]">
         {TABLE_HEAD.map((head: String, index: number) => {
           return (
             <div key={index} className="flex items-center justify-center">
@@ -33,7 +33,7 @@ export default function DefaultTimeline({ repositories }: { repositories: Reposi
         {repositories?.map(({ name, html_url, created_at, pushed_at }, index: number) => {
           const Date = [created_at, pushed_at].map((date) => ParsingDate(date));
           return (
-            <li key={index} className="h-[20%] text-md [&>*:nth-child(n+3)]:hidden lg:[&>*:nth-child(n+2)]:block      grid items-center  grid-cols-2 lg:grid-cols-4 border-b-2  border-gray-600/25">
+            <li key={index} className="h-[20%] text-md [&>*:nth-child(n+3)]:hidden lg:[&>*:nth-child(n+3)]:block      grid items-center  grid-cols-2 lg:grid-cols-4 border-b-2  border-gray-600/25">
               <p className="break-all  pl-2 text-center w-full">{name}</p>
               <a className=" text-center w-full" href={html_url}>
                 Navegar
