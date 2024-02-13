@@ -108,8 +108,10 @@ export default function FirstPage({ repositories }: { repositories: Repository[]
                   width: useTamano.ancho < 960 ? `${translate}%` : "100%",
                 }}
               >
-                <div className=" h-full  pt-14  overflow-hidden  w-full  p-5   z-50 text-white relative   border-2 border-quaternary  ">
-                  <Letter repositories={repositories} />
+                <div className="overflow-hidden h-full   w-full  p-5   z-50 text-white relative   border-2 border-quaternary  ">
+                  <div className="h-[80%]  mt-10">
+                    <Letter repositories={repositories} />
+                  </div>
                 </div>
 
                 <div className="hidden lg:inline-block lg:h-full lg:w-full z-50">

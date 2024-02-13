@@ -18,22 +18,45 @@ export default function DefaultTimeline({ repositories }: { repositories: Reposi
     const anio = fecha.getFullYear();
     return `${dia}/${mes}/${anio}`;
   }
-
-  return repositories ? (
-    <Card placeholder={""} className="h-auto w-full overflow-y-scroll bg-quinary my-auto ">
-      <table className="w-full min-w-max table-auto text-left   ">
+  return (
+    <section className="w-full bg-quinary h-full rounded-lg border-[0.1px] border-secondary/45">
+      <div className=" [&>*:nth-child(n+3)]:hidden text-xl grid grid-cols-2 h-[10%]">
+        {TABLE_HEAD.map((head: String, index: number) => {
+          return (
+            <div key={index} className="flex items-center">
+              <p className="pl-2 ">{head}</p>
+            </div>
+          );
+        })}
+      </div>
+      <ul className="h-[90%] overflow-y-scroll border-2  border-gray-600/5 ">
+        {repositories?.map(({ name }, index: number) => {
+          return (
+            <li key={index} className="h-[20%] text-md   pl-2   grid items-center grid-cols-2 lg:grid-cols-4 border-b-2  border-gray-600/25">
+              <p className="break-words w-[80%] ">{name}</p>
+              <p>Navegar</p>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+/* return repositories ? (
+    <Card placeholder={""} className="h-[70%] w-full overflow-y-scroll bg-quinary my-auto overflow-x-hidden  ">
+      <table className="w-full min-w-max table-auto text-left overflow-hidden   ">
         <thead>
-          <tr className="text-white  [&>*:nth-child(n+3)]:hidden  bg-black/   ">
+          <tr className="text-white   [&>*:nth-child(n+3)]:hidden       ">
             {TABLE_HEAD.map((head, index: number) => (
-              <th key={head} onClick={() => index != 1 && HandleSorting(index)} className={`${index != 1 && "lg:active:bg-white/30"} transition-all p-4`}>
-                <p color="blue-gray" className="font-extrabold text-xl leading-none opacity-70  ">
+              <th key={head} onClick={() => index != 1 && HandleSorting(index)} className={`${index != 1 && "lg:active:bg-white/30"}  transition-all p-4`}>
+                <p color="blue-gray" className="text-left font-extrabold text-xl leading-none opacity-70  ">
                   {head}
                 </p>
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="[&>*:nth-child(n+5)]:hidden border-2 border-gray-600/5">
+        <tbody className="max-h-[300px] border-2  border-gray-600/5 overflow-y-scroll">
           {repositories.map(({ name, html_url, created_at, pushed_at, commits_url }, index) => {
             const fechas = [created_at, pushed_at].map((e) => ParsingDate(e));
             return (
@@ -69,5 +92,4 @@ export default function DefaultTimeline({ repositories }: { repositories: Reposi
     </Card>
   ) : (
     <div>Loading...</div>
-  );
-}
+  ); */
