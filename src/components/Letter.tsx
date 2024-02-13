@@ -29,11 +29,14 @@ export default function DefaultTimeline({ repositories }: { repositories: Reposi
           );
         })}
       </div>
-      <ul className="h-[90%] overflow-y-scroll border-2  border-gray-600/5 ">
+      <ul className="h-[90%] overflow-y-scroll border-2  border-gray-600/5  ">
         {repositories?.map(({ name, html_url, created_at, pushed_at }, index: number) => {
           const Date = [created_at, pushed_at].map((date) => ParsingDate(date));
           return (
-            <li key={index} className="h-[20%] text-md [&>*:nth-child(n+3)]:hidden lg:[&>*:nth-child(n+3)]:block      grid items-center  grid-cols-2 lg:grid-cols-4 border-b-2  border-gray-600/25">
+            <li
+              key={index}
+              className="h-[20%] text-md [&>*:nth-child(n+3)]:hidden lg:[&>*:nth-child(n+3)]:block even:bg-black/30      grid items-center  grid-cols-2 lg:grid-cols-4 border-b-2  border-gray-600/25"
+            >
               <p className="break-all  pl-2 text-center w-full">{name}</p>
               <a className=" text-center w-full" href={html_url}>
                 Navegar
