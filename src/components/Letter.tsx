@@ -20,21 +20,26 @@ export default function DefaultTimeline({ repositories }: { repositories: Reposi
   }
   return (
     <section className="w-full bg-quinary h-full rounded-lg border-[0.1px] border-secondary/45">
-      <div className=" [&>*:nth-child(n+3)]:hidden text-xl grid grid-cols-2 h-[10%]">
+      <div className=" [&>*:nth-child(n+3)]:hidden lg:[&>*:nth-child(n+3)]:flex  text-xl grid grid-cols-2 lg:grid-cols-4 h-[10%]">
         {TABLE_HEAD.map((head: String, index: number) => {
           return (
-            <div key={index} className="flex items-center">
-              <p className="pl-2 ">{head}</p>
+            <div key={index} className="flex items-center justify-center">
+              <p>{head}</p>
             </div>
           );
         })}
       </div>
       <ul className="h-[90%] overflow-y-scroll border-2  border-gray-600/5 ">
-        {repositories?.map(({ name }, index: number) => {
+        {repositories?.map(({ name, html_url, created_at, pushed_at }, index: number) => {
+          const Date = [created_at, pushed_at].map((date) => ParsingDate(date));
           return (
-            <li key={index} className="h-[20%] text-md   pl-2   grid items-center grid-cols-2 lg:grid-cols-4 border-b-2  border-gray-600/25">
-              <p className="break-words w-[80%] ">{name}</p>
-              <p>Navegar</p>
+            <li key={index} className="h-[20%] text-md [&>*:nth-child(n+3)]:hidden lg:[&>*:nth-child(n+2)]:block      grid items-center  grid-cols-2 lg:grid-cols-4 border-b-2  border-gray-600/25">
+              <p className="break-all  pl-2 text-center w-full">{name}</p>
+              <a className=" text-center w-full" href={html_url}>
+                Navegar
+              </a>
+              <p className="pl-2 lg:text-center w-full text-center">{Date[0]}</p>
+              <p className="pl-2 lg:text-center w-full text-center">{Date[1]}</p>
             </li>
           );
         })}
