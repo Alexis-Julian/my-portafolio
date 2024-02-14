@@ -8,6 +8,7 @@ import AboutMe from "./AboutMe";
 import ReactHammer from "react-hammerjs";
 import SpinnerLoading from "./SpinnerLoading";
 import BurgerMenu from "./BurgerMenu";
+import ArrowDown from "./ArrowDown";
 
 function CreateLayout({ ancho, alto }: { alto: number; ancho: number }, CreateSections: any) {
   const navSection = ["Portafolio", "Proyectos"];
@@ -69,6 +70,11 @@ export default function FirstPage({ repositories }: { repositories: Repository[]
         <div>
           <div className="h-[60px] w-[60px]  fixed top-0 p-3 z-[999] lg:hidden  ">
             <BurgerMenu navSection={Sections} useSection={useSection} setSection={setSection} setCurriculum={setCurriculum} useCurriculum={openCurriculum} />
+          </div>
+          <div className="h-[10%] w-full lg:grid lg:grid-cols-2 grid-cols-1 items-center justify-between fixed bottom-0 ml-4 z-[99] hidden  ">
+            <div className="   h-8 w-8 hidden lg:inline-block">
+              <ArrowDown setSection={setSection} useSection={useSection} navSection={Sections} />
+            </div>
           </div>
           <ReactHammer onSwipe={HandleSwipe}>
             <main

@@ -48,16 +48,6 @@ export default function Banner({ setSection, navSection, useSection }: { setSect
               <p className="font-bold text-quaternary">Full Stack Junior!</p>
             </span>
           </div>
-
-          <div className="h-[10%] w-full grid lg:grid-cols-2 grid-cols-1 items-center justify-between ">
-            <div className="   h-8 w-8 hidden lg:inline-block">
-              <ArrowDown setSection={setSection} />
-            </div>
-            <div className="hidden lg:justify-end  lg:items-end items-center justify-center  mr-4 lg:gap-2 gap-14 lg:flex ">
-              <div className="bg-[url('/github-logo.svg')]   hover:scale-90 transition-all bg-cover bg-center bg-white border-2 border-quaternary  h-12 w-12 flex items-center justify-center cursor-pointer rounded-full"></div>
-              <div className="bg-[url('/icon_linkedin.svg')] hover:scale-90 transition-all border-2 border-quaternary  h-12 w-12 flex items-center justify-center cursor-pointer rounded-full"></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
