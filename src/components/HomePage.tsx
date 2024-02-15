@@ -50,17 +50,20 @@ export default function FirstPage({ repositories }: { repositories: Repository[]
   const { Sections, translate, screenTotal } = CreateLayout(useTamano, CreateSections);
 
   const [useSection, setSection] = useState<Section>(Sections[0]);
+
   const HandleSwipe = (event: any) => {
     if (useTamano.ancho > 960) return null;
 
-    if (event.direction === 2 && index < Sections.length - 1) {
+    if (event.direction === 2) {
       // Deslizamiento hacia la izquierda
-      index += 1;
-      setSection(Sections[index]);
-    } else if (event.direction === 4 && index > 0) {
+
+      if (useSection.index < Sections.length - 1) return setSection(Sections[useSection.index + 1]);
+      return setSection(Sections[0]);
+    } else if (event.direction === 4) {
       // Deslizamiento hacia la derecha
-      index -= 1;
-      setSection(Sections[index]);
+
+      if (useSection.index > 0) return setSection(Sections[useSection.index - 1]);
+      return setSection(Sections[Sections.length - 1]);
     }
   };
 
